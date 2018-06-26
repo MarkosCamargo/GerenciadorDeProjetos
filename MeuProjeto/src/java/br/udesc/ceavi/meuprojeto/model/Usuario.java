@@ -6,6 +6,7 @@
 package br.udesc.ceavi.meuprojeto.model;
 
 import java.io.Serializable;
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,7 @@ import javax.persistence.Table;
 })
 @Entity
 @Table
+@Cacheable(false)
 public class Usuario implements Serializable {
 
     @Id

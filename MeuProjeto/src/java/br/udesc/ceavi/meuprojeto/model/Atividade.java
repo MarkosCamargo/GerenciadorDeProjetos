@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -38,6 +39,7 @@ import javax.persistence.TemporalType;
 })
 @Entity
 @Table
+@Cacheable(false)
 public class Atividade implements Serializable {
 
     @Id

@@ -111,28 +111,32 @@ public class AtividadeBean implements Serializable {
 //            for (Usuario usuariosSelecionado : this.usuariosSelecionados) {
 //                this.atividade.getPessoas().add(usuariosSelecionado.getPessoa());
 //            }
- if (((TipoUsuario) ControleSessao.getTipoUsuario()).desc.equalsIgnoreCase("ADMINISTRADOR")) {
-            String[] usuariosSplit = this.tagsUsuario.split(",");
-            this.atividade.setPessoas(new ArrayList<>());
-            for (int i = 0; i < usuariosSplit.length; i++) {
-                String nome = usuariosSplit[i];
-                for (Usuario usuario : usuariosAux) {
-                    if (nome.equalsIgnoreCase(usuario.getPessoa().getNome())) {
-                        this.atividade.getPessoas().add(usuario.getPessoa());
+            if (((TipoUsuario) ControleSessao.getTipoUsuario()).desc.equalsIgnoreCase("ADMINISTRADOR")) {
+                String[] usuariosSplit = this.tagsUsuario.split(",");
+                this.atividade.setPessoas(new ArrayList<>());
+                for (int i = 0; i < usuariosSplit.length; i++) {
+                    String nome = usuariosSplit[i];
+                    for (Usuario usuario : usuariosAux) {
+                        if (nome.equalsIgnoreCase(usuario.getPessoa().getNome())) {
+                            this.atividade.getPessoas().add(usuario.getPessoa());
+                        }
+                    }
+
+                }
+
+                for (Esforco esforco : esforcosAux) {
+                    if (this.atividade.getEsforco().getTamanho().equalsIgnoreCase(esforco.getTamanho())) {
+                        this.atividade.setEsforco(esforco);
                     }
                 }
-
             }
-
-            for (Esforco esforco : esforcosAux) {
-                if (this.atividade.getEsforco().getTamanho().equalsIgnoreCase(esforco.getTamanho())) {
-                    this.atividade.setEsforco(esforco);
-                }
+            if (this.atividade.getStatus() == Situacao.CONCLUIDA && this.atividade.getDataTermino() == null) {
+                addMessage(FacesMessage.SEVERITY_WARN, "Ops", "Deve informar a data de término");
+            } else {
+                this.atividadeService.edit(this.atividade);
+                addMessage(FacesMessage.SEVERITY_INFO, "Perfeito", "Salvo com sucesso");
+                limparDados();
             }
- }
-            this.atividadeService.edit(this.atividade);
-            addMessage(FacesMessage.SEVERITY_INFO, "Perfeito", "Salvo com sucesso");
-            limparDados();
         } catch (Exception ex) {
             Logger.getLogger(AtividadeBean.class.getName()).log(Level.SEVERE, null, ex);
             addMessage(FacesMessage.SEVERITY_ERROR, "Ops", "Erro ao salvar");
@@ -222,9 +226,6 @@ public class AtividadeBean implements Serializable {
             return false;
         }
         if (this.atividade.getTitulo().equalsIgnoreCase("")) {
-            return false;
-        }
-        if (this.atividade.getDataInicio() == null) {
             return false;
         }
         if (this.atividade.getStatus() == null) {
@@ -385,7 +386,7 @@ public class AtividadeBean implements Serializable {
     }
 
     public List<Atividade> getAtividadesConcluidasAntesPrazo() {
-       this.atividadesConcluidasAntesPrazo = this.atividadeService.listarConcluidasAntesPrazo();
+        this.atividadesConcluidasAntesPrazo = this.atividadeService.listarConcluidasAntesPrazo();
         return atividadesConcluidasAntesPrazo;
     }
 

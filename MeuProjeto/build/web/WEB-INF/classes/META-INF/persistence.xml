@@ -11,7 +11,8 @@
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="root"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
-      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
+     <property name="eclipselink.query-results-cache" value="false"/>
+     <property name="eclipselink.cache.shared.default" value="false"/>
     </properties>
   </persistence-unit>
 </persistence>
