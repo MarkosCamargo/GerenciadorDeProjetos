@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" 
+                template="template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="corpo">
+
+        <b:column col-sm="9" offset-sm="3" col-md="10" offset="2" styleClass="main">
+            <h1>Dashboard</h1>
+            <hr/>
+            <b:row styleClass="placeholders">
+                <b:column col-xs="6" col-sm="3" styleClass="placeholder">
+                    <b:panel class="sombra">
+                        <h4>Total de Horas</h4>
+                        <span class="text-muted"><h:outputText value="#{atividadeBean.totalHorasAtividades}"/></span>
+                    </b:panel>
+                </b:column>
+
+                <b:column col-xs="6" col-sm="3" styleClass="placeholder">
+                    <b:panel class="sombra">
+                        <a href="atividade.jsf">
+                            <h4 class="text-danger">Tarefas Abertas</h4>
+                            <span class="text-muted"><h:outputText value="#{atividadeBean.contAtividadeAberta}" /></span>
+                        </a>
+                    </b:panel>
+                </b:column>
+
+                <b:column col-xs="6" col-sm="3" styleClass="placeholder">
+                    <b:panel class="sombra">
+                        <a href="atividade.jsf">
+                            <h4 class="text-warning">Tarefas Não Iniciadas</h4>
+                            <span class="text-muted"><h:outputText value="#{atividadeBean.contAtividadeNaoIniciada}" /></span>
+                        </a>
+                    </b:panel>
+                </b:column>
+
+                <b:column col-xs="6" col-sm="3" styleClass="placeholder">
+                    <b:panel class="sombra">
+                        <a href="atividade.jsf">
+                            <h4 class="text-success">Tarefas Concluídas</h4>
+                            <span class="text-muted"><h:outputText value="#{atividadeBean.contAtividadeConcluida}" /></span>
+                        </a>
+                    </b:panel>
+                </b:column>
+
+            </b:row>
+            <!--                    <h1>Section title</h1>
+                                <hr/>-->
+            <b:row styleClass="table-responsive">
+                <b:fullCalendar lang="pt-br"/>
+
+<!--                        <h:dataTable styleClass="table table-striped" value="#{loremIpsumBean.items}" var="item" rows="15">
+                            <h:column>
+                                <f:facet name="header"><h:outputText value="#" /></f:facet>
+                                <h:outputText value="#{item.h1}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><h:outputText value="Header" /></f:facet>
+                                <h:outputText value="#{item.h2}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><h:outputText value="Header" /></f:facet>
+                                <h:outputText value="#{item.h3}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><h:outputText value="Header" /></f:facet>
+                                <h:outputText value="#{item.h4}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><h:outputText value="Header" /></f:facet>
+                                <h:outputText value="#{item.h5}" />
+                            </h:column>
+                        </h:dataTable>-->
+            </b:row>
+        </b:column>
+    </ui:define>
+</ui:composition>

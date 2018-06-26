@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:form>
+        <b:navBar brand="MeuProjeto" brandHref="dashboard.jsf" inverse="true" fixed="top" fluid="true" class="navBar-color">
+            <b:navbarLinks pull="right">
+                <b:navLink value="Dashboard" href="dashboard.jsf"></b:navLink>
+                <b:dropMenu value="#{controleSessao.nomeUsuario}" icon="user">
+                    <b:navCommandLink value="Sair" icon="log-out" style="color: red" immediate="true" action="#{usuarioBean.signOut()}"></b:navCommandLink>
+                </b:dropMenu>
+            </b:navbarLinks>
+        </b:navBar>
+    </h:form>
+</ui:composition>

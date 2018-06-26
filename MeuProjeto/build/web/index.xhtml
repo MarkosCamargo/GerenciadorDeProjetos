@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+        <meta name="author" content="Marcos Camargo"></meta>
+        <link rel="stylesheet" type="text/css" href="resources/style/style.css"/>
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 350px;
+                padding: 15px;
+            }
+            .login-box-msg, .register-box-msg {
+                margin: 0;
+                text-align: center;
+                padding: 0 20px 20px 20px;
+                color: #666;
+            }
+            .ui-widget, div.wrapper {
+                font-family: "Source Sans Pro","Trebuchet MS","Helvetica Neue",Helvetica,Arial,sans-serif;
+            }
+            html{
+                font-family: "Source Sans Pro","Trebuchet MS","Helvetica Neue",Helvetica,Arial,sans-serif;
+            }
+
+            .login-logo a, .register-logo a {
+                color: #444;
+                text-align: center;
+
+            }
+            a:hover{
+                text-decoration: none;
+            }
+            a{
+                text-decoration: none;
+            }
+            .login-logo, .register-logo {
+                font-size: 35px;
+                text-align: center;
+                margin-bottom: 25px;
+                font-weight: 100;
+            }
+
+
+        </style>
+    </h:head>
+    <h:body style="padding-top: 60px; background-color: #d2d6de; background-image: url(resources/img/projectImg.jpg);">
+         
+<b:growl  id="growlSpecific" placementFrom="top" show-detail="true"
+         global-only="false" class="sombra"
+         show-summary="true" allow-dismiss="true"
+         animation-enter="animated bounceInDown"
+         animation-exit="animated flipOutX"
+         escape="false" />
+        <b:container>
+            <h:form styleClass="form-signin" prependId="false">
+                <!--                <h2 class="form-signin-heading"><b>Meu</b> Projeto</h2>-->
+                <div class="login-logo">
+                    <!--<p:graphicImage url="http://www1.udesc.br/imagens/id_submenu/899/cor_vertical_rgb.jpg" height="60" width="60"></p:graphicImage>-->
+
+                    <h2 style="text-shadow: grey 0.1em 0.1em 0.3em"><b>Meu</b>Projeto</h2>
+
+                </div>
+                <b:panel class="sombra">
+                    <p class="login-box-msg">Olá, faça o seu login</p>
+                    <b:inputText id="email" placeholder="E-mail" value="#{usuarioBean.email}">
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputText>
+                    <b:inputText id="password" placeholder="Senha" value="#{usuarioBean.senha}" type="password">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="key" />
+                        </f:facet>
+                    </b:inputText>
+                    <p:selectBooleanCheckbox value="false" itemLabel="Lembre"/>
+                    <br/><br/>
+                    <b:commandButton look="primary btn-block" value="Entrar" icon="log-in" size="lg" action="#{usuarioBean.signIn()}"/>
+                    <br/>
+                    <!-- /.social-auth-links -->
+
+<!--                    <a href="#">Esqueceu a senha?</a><br/>
+                    <a href="#" class="text-center">Abra uma conta</a>-->
+                </b:panel>
+            </h:form>
+        </b:container>
+    </h:body>
+</html>

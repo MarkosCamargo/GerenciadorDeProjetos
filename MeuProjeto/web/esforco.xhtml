@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" 
+                template="template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="corpo">
+
+        <b:column col-sm="9" offset-sm="3" col-md="10" offset="2" styleClass="main">
+            <h1>Esforço</h1>
+            <hr/>
+
+            <b:panel>
+                <h:form>
+                    <b:row>
+                        <b:column span="2">
+                            <b:commandButton value="Novo" rendered="#{usuarioBean.mostraCampo}" icon="plus" look="primary" action="cad_esforco.jsf"  style="width:100%;  margin-bottom: 2%;"/>
+                        </b:column>
+                         <b:column span="2">
+                             <b:commandButton value="Editar" rendered="#{usuarioBean.mostraCampo}" icon="edit" look="warning" action="#{esforcoBean.preparaEditar()}"  style="width:100%;  margin-bottom: 2%;"/>
+                        </b:column>
+                        <b:column span="3">
+                            <b:commandButton value="Exluir Selecionado" rendered="#{usuarioBean.mostraCampo}" ajax="true" update="tabelaEsforcos growlSpecific"  icon="trash" look="danger" action="#{esforcoBean.remover()}" style="width:100%" />
+                        </b:column>
+                    </b:row>
+
+                    <hr/>
+
+                    <p:dataTable id="tabelaEsforcos" var="esforco" value="#{esforcoBean.esforcos}" selection="#{esforcoBean.esforcosSelecionados}" rowKey="#{esforco.idEsforco}" style="margin-bottom:0">
+                        <!--                        <f:facet name="header">
+                                                    Selecione
+                                                </f:facet>-->
+                        <p:column selectionMode="multiple" style="width:46px;text-align:center"/>
+
+                        <p:column headerText="Tamanho" style="text-align: center">
+                            <h:outputText value="#{esforco.tamanho}" />
+                        </p:column>
+
+                        <p:column headerText="Número de Horas" style="text-align: center">
+                            <h:outputText value="#{esforco.numeroHoras}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+            </b:panel>
+
+        </b:column>
+    </ui:define>
+</ui:composition>

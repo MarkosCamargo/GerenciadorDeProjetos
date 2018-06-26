@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" 
+                template="template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="corpo">
+
+        <b:column col-sm="9" offset-sm="3" col-md="10" offset="2" styleClass="main">
+            <h1>Cadastro de Atividade</h1>
+            <hr/>
+
+            <b:panel>
+                <h:form id="formAtividade">
+
+                    <b:modal id="amodal2" title="Selecione os Recursos Humanos" styleClass="modalUsuario">
+                        <p:dataTable var="usuario" value="#{atividadeBean.usuariosAux}" selection="#{atividadeBean.usuariosSelecionados}" rowKey="#{usuario.idUsuario}" style="margin-bottom:0" paginator="true" rows="10"
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <!--                        <f:facet name="header">
+                                                        Selecione
+                                                    </f:facet>-->
+                            <p:column selectionMode="multiple"  style="width:46px;text-align:center"/>
+
+                            <p:column headerText="Nome">
+                                <h:outputText value="#{usuario.pessoa.nome}" />
+                            </p:column>
+
+                        </p:dataTable>
+                        <f:facet name="footer">
+                            <b:button value="Fechar" look="secondary" dismiss="modal" />
+                            <b:commandButton value="Selecionar" actionListener="#{atividadeBean.selecionaUsuarios()}" ajax="true" update="growlSpecific campTags" look="primary" />
+                        </f:facet>
+                    </b:modal>
+
+                    <b:row>
+                        <b:column span="7">
+                            <b:inputText placeholder="Título" value="#{atividadeBean.atividade.titulo}" ></b:inputText>
+                        </b:column>
+                        <b:column span="5">
+                            <p:selectOneMenu style="width: 100%" value="#{atividadeBean.atividade.tipo}" >
+                                <f:selectItem itemLabel="Tipo" itemValue="" />
+                                <f:selectItems value="#{atividadeBean.tipos}"/>
+                            </p:selectOneMenu>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <b:inputTextarea placeholder="Descrição..." value="#{atividadeBean.atividade.descricao}" >
+                            </b:inputTextarea>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="3">
+                            <b:selectOneMenu style="width: 100%" value="#{atividadeBean.atividade.status}" >
+                                <f:selectItem itemLabel="Status" itemValue="" />
+                                <f:selectItems value="#{atividadeBean.situacoes}"/>
+                            </b:selectOneMenu>
+                        </b:column>
+                        <b:column span="3"  rendered="#{usuarioBean.mostraCampo}">
+                            <b:dateTimePicker placeholder="Data Inicio" value="#{atividadeBean.atividade.dataInicio}" 
+                                              allow-input-toggle="true" style="margin-bottom: 2%;"/>
+                        </b:column>
+                        <b:column span="3"  rendered="#{usuarioBean.mostraCampo}">
+                            <b:dateTimePicker placeholder="Data Prevista" value="#{atividadeBean.atividade.dataPrevista}" 
+                                              allow-input-toggle="true" style="margin-bottom: 2%;"/>
+                        </b:column>
+                        <b:column span="3" >
+                            <b:dateTimePicker placeholder="Data Término" value="#{atividadeBean.atividade.dataTermino}" 
+                                              allow-input-toggle="true" style="margin-bottom: 2%;"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="3" style="padding: 0.1px">
+                            <b:inputText placeholder="Esforço" value="#{atividadeBean.atividade.esforco.tamanho}" typeahead="true" typeahead-values="#{atividadeBean.esforcos}" tiny-screen="full-width" style="margin-bottom: 2%;" ></b:inputText>
+                        </b:column>
+                        <b:column span="8" style="padding: 0.1px">
+                            <b:inputText id="campTags" tags="true" value="#{atividadeBean.tagsUsuario}" placeholder="Atrbuído para.." typeahead="true" typeahead-values="#{atividadeBean.usuarios}" tiny-screen="full-width" ></b:inputText>
+                        </b:column>
+                        <b:column span="1"  style="padding: 0.1px">
+                            <center>
+                                <b:button onclick="$('.modalUsuario').modal()" icon="search" look="primary" style="width:70%; margin-bottom: 2%; margin-left: -25px"/>
+                            </center>  
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <b:inputTextarea placeholder="Observação..." value="#{atividadeBean.atividade.observacao}" >
+                            </b:inputTextarea>
+                        </b:column>
+                    </b:row>
+                    <hr/>
+                    <b:row>
+                        <b:column span="2" >
+                            <b:commandButton value="Salvar" actionListener="#{atividadeBean.cadastrar()}" ajax="true" update="formAtividade growlSpecific" look="primary" style="width:100%; margin-bottom: 2%;"/>
+                        </b:column>
+                        <b:column span="2">
+                            <b:commandButton value="Limpar" ajax="true" update="formAtividade" actionListener="#{atividadeBean.limparDados()}" style="width:100%" />
+                        </b:column>
+                    </b:row>
+                </h:form>
+
+            </b:panel>
+
+        </b:column>
+    </ui:define>
+</ui:composition>

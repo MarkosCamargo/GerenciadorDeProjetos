@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" 
+                template="template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="corpo">
+
+        <b:column col-sm="9" offset-sm="3" col-md="10" offset="2" styleClass="main">
+            <h1>Alterar Esforço</h1>
+            <hr/>
+
+            <b:panel>
+                <h:form id="formEsforco">
+                    <b:row>
+                        <b:column span="4">
+                            <b:inputText placeholder="Tamanho" value="#{esforcoBean.esforco.tamanho}"></b:inputText>
+                        </b:column>
+                        <b:column span="4">
+                            <b:inputText placeholder="Número de Horas" value="#{esforcoBean.esforco.numeroHoras}"></b:inputText>
+<!--                            <b:dateTimePicker placeholder="Numero de Horas"  value="#{esforcoBean.esforco.numeroHoras}"
+                                              allow-input-toggle="true"
+                                              locale="br"
+                                              show-icon="false"
+                                              showDate="false"/>-->
+                        </b:column>
+                    </b:row>
+                    <hr/>
+                    <b:row>
+                        <b:column span="2" >
+                            <b:commandButton value="Salvar" action="#{esforcoBean.editar()}" look="primary" style="width:100%; margin-bottom: 2%;"/>
+                        </b:column>
+                        <b:column span="2">
+                            <b:commandButton value="Limpar" ajax="true" update="formEsforco" actionListener="#{esforcoBean.limparDados()}" style="width:100%" />
+                        </b:column>
+                    </b:row>
+                </h:form>
+
+            </b:panel>
+
+        </b:column>
+    </ui:define>
+</ui:composition>

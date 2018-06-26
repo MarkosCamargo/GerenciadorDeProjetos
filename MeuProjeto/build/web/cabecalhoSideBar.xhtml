@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui">
+
+
+    <b:column col-sm="3" col-md="2" styleClass="sidebar">
+        <b:listLinks>
+            <b:navLink header="GERAL" />
+            <b:navLink href="dashboard.jsf" icon="home" value="Dashboard" active="true"/>
+        </b:listLinks>
+        <b:listLinks>
+            <b:navLink header="ATIVIDADE"/>
+            <b:navLink href="cad_atividade.jsf" rendered="#{usuarioBean.mostraCampo}" value="Cadastro"/>
+            <b:navLink href="atividade_atrasada.jsf" contentClass="text-danger" rendered="#{usuarioBean.mostraCampo}" value="Atrasadas"/>
+            <b:navLink href="atividade_concluida_antes.jsf" contentClass="text-success" rendered="#{usuarioBean.mostraCampo}" value="Concluídas Antes do Prazo"/>
+            <b:navLink href="atividade.jsf"  value="Gerenciar Atividade" />
+        </b:listLinks>
+        <b:listLinks>
+            <b:navLink header="ESFORÇO"/>
+            <b:navLink href="cad_esforco.jsf" rendered="#{usuarioBean.mostraCampo}" value="Cadastro"/>
+            <b:navLink href="esforco.jsf"  value="Gerenciar Esforço" />
+        </b:listLinks>
+        <b:listLinks>
+            <b:navLink header="USUARIO/RH" rendered="#{usuarioBean.mostraCampo}"/>
+            <b:navLink href="cad_usuario.jsf" rendered="#{usuarioBean.mostraCampo}" value="Cadastro"/>
+            <b:navLink href="usuario.jsf" rendered="#{usuarioBean.mostraCampo}" value="Gerenciar Usuário"/>
+        </b:listLinks>
+    </b:column>
+</ui:composition>
