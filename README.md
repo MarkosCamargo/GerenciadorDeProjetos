@@ -12,7 +12,7 @@ Desta forma, este trabalho requer que o aluno crie um software para criar um pla
 com o MPS.BR um plano de projeto deve conter as atividades, esforço de cada atividade e recursos os
 humanos disponíveis e necessários.
 
-3) Critérios de Avaliação
+# Critérios de Avaliados
 - Desenvolver um software para cadastro do plano do projeto: atividades, esforço e recursos os humanos.
 - O software deve ser apresentado e entregue em funcionamento.
 - O software deve permitir o cadastrar e manter de atividades (consulta, inclusão, alteração e exclusão de
