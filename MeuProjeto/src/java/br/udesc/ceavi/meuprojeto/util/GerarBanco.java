@@ -26,7 +26,7 @@ public class GerarBanco {
         p.setIdRecursoHumano(1);
         p.setEmail("teste");
         p.setNome("administrador");
-        p.setTelefone("(49) 9 8844-1999");
+        p.setTelefone("(49) 9 8822-2321");
         u.setPessoa(p);
         u.setSenha(GerarMD5.criptografar("teste"));
         u.setTipoUsuario(TipoUsuario.ADM);
@@ -36,11 +36,11 @@ public class GerarBanco {
         RecursoHumano p2 = new RecursoHumano();
         u2.setIdUsuario(2);
         p2.setIdRecursoHumano(2);
-        p2.setEmail("1");
-        p2.setNome("visualizar");
+        p2.setEmail("marcos");
+        p2.setNome("Marcos Rufino de Camargo");
         p2.setTelefone("(49) 9 8844-1999");
         u2.setPessoa(p2);
-        u2.setSenha(GerarMD5.criptografar("1"));
+        u2.setSenha(GerarMD5.criptografar("marcos"));
         u2.setTipoUsuario(TipoUsuario.VISUALIZAR);
         daoU.incluir(u2);
         

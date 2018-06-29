@@ -76,7 +76,10 @@
                         <b:column span="3" style="padding: 0.1px">
                             <b:inputText placeholder="Esforço" value="#{atividadeBean.atividade.esforco.tamanho}" typeahead="true" typeahead-values="#{atividadeBean.esforcos}" tiny-screen="full-width" style="margin-bottom: 2%;" ></b:inputText>
                         </b:column>
-                        <b:column span="8" style="padding: 0.1px">
+                        <b:column span="3">
+                            <b:inputText placeholder="Horas Gastas" value="#{atividadeBean.atividade.horasGastas}" ></b:inputText>
+                        </b:column>
+                        <b:column span="5" style="padding: 0.1px">
                             <b:inputText id="campTags" tags="true" value="#{atividadeBean.tagsUsuario}" placeholder="Atrbuído para.." typeahead="true" typeahead-values="#{atividadeBean.usuarios}" tiny-screen="full-width" ></b:inputText>
                         </b:column>
                         <b:column span="1"  style="padding: 0.1px">

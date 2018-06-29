@@ -79,6 +79,9 @@ public class Atividade implements Serializable {
     
     @Column
     private String observacao;
+    
+      @Column
+    private int horasGastas;
 
     public Atividade() {
         esforco = new Esforco();
@@ -174,6 +177,16 @@ public class Atividade implements Serializable {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+
+    public int getHorasGastas() {
+        return horasGastas;
+    }
+
+    public void setHorasGastas(int horasGastas) {
+        this.horasGastas = horasGastas;
+    }
+    
+    
     
     @Override
     public int hashCode() {

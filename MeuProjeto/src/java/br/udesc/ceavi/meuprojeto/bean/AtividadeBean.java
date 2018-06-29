@@ -133,9 +133,13 @@ public class AtividadeBean implements Serializable {
             if (this.atividade.getStatus() == Situacao.CONCLUIDA && this.atividade.getDataTermino() == null) {
                 addMessage(FacesMessage.SEVERITY_WARN, "Ops", "Deve informar a data de término");
             } else {
-                this.atividadeService.edit(this.atividade);
-                addMessage(FacesMessage.SEVERITY_INFO, "Perfeito", "Salvo com sucesso");
-                limparDados();
+                if (this.atividade.getHorasGastas() <= 0 && !((TipoUsuario) ControleSessao.getTipoUsuario()).desc.equalsIgnoreCase("ADMINISTRADOR") && this.atividade.getStatus() == Situacao.CONCLUIDA) {
+                    addMessage(FacesMessage.SEVERITY_WARN, "Ops", "Deve informar as horas gastas");
+                } else {
+                    this.atividadeService.edit(this.atividade);
+                    addMessage(FacesMessage.SEVERITY_INFO, "Perfeito", "Salvo com sucesso");
+                    limparDados();
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(AtividadeBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -367,7 +371,7 @@ public class AtividadeBean implements Serializable {
         totalHorasAtividades = 0;
         List<Atividade> at = this.atividadeService.listar();
         for (Atividade atividade1 : at) {
-            totalHorasAtividades = totalHorasAtividades + atividade1.getEsforco().getNumeroHoras();
+            totalHorasAtividades = totalHorasAtividades + atividade1.getHorasGastas();
         }
         return totalHorasAtividades;
     }

@@ -10,7 +10,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-06-26T12:29:44")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-06-29T15:43:11")
 @StaticMetamodel(Atividade.class)
 public class Atividade_ { 
 
@@ -18,6 +18,7 @@ public class Atividade_ {
     public static volatile SingularAttribute<Atividade, Tipo> tipo;
     public static volatile SingularAttribute<Atividade, String> observacao;
     public static volatile SingularAttribute<Atividade, Esforco> esforco;
+    public static volatile SingularAttribute<Atividade, Integer> horasGastas;
     public static volatile SingularAttribute<Atividade, Date> dataTermino;
     public static volatile SingularAttribute<Atividade, String> titulo;
     public static volatile SingularAttribute<Atividade, Date> dataInicio;

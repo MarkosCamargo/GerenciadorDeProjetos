@@ -38,7 +38,9 @@ public class FiltroAcessoSistema implements Filter {
             if (t != null) {
                 if (t.equals(TipoUsuario.VISUALIZAR) && (requisicao.getRequestURI().endsWith("cad_usuario.jsf")
                         | requisicao.getRequestURI().endsWith("edit_usuario.jsf") | requisicao.getRequestURI().endsWith("cad_atividade.jsf")
-                        | requisicao.getRequestURI().endsWith("cad_esforco.jsf"))) {//paginas que o usuario não pode acessar
+                        | requisicao.getRequestURI().endsWith("cad_esforco.jsf")  | requisicao.getRequestURI().endsWith("usuario.jsf")
+                        | requisicao.getRequestURI().endsWith("edit_esforco.jsf") | requisicao.getRequestURI().endsWith("atividade_atrasada.jsf") 
+                        | requisicao.getRequestURI().endsWith("atividade_concluida_antes.jsf"))) {//paginas que o usuario não pode acessar
                     redireciona("dashboard.jsf", response);
                 } else
                     chain.doFilter(request, response);
